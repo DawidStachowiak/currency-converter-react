@@ -1,6 +1,6 @@
+import ".style.css"
 
-
-<form className="js-maiForm">
+<form className="form">
             <fieldset className="form__fieldset">
                 <legend>Kalkulator walut</legend>
 
@@ -35,3 +35,5 @@
             <button className="form__button js-convert__button" type="submit">Przelicz</button>
             <button className="form__button js-remove__button" type="reset">Wyczyść formularz</button>
         </form>
+
+        export default Form;
