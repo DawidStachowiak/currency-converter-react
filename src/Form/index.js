@@ -1,4 +1,12 @@
-import ".style.css"
+import ".style.css";
+import { useState } from "react";
+
+const Form =({currencies}) =>{
+
+    const [result, setResult] = useState("");
+    const [rates, setRate] = useState("USD");
+};
+
 
 <form className="form">
             <fieldset className="form__fieldset">
