@@ -1,6 +1,6 @@
 import "./style.css";
 import { useState } from "react";
-import {Result} from ("./Result");
+import { Result } from "../Result";
 
 
 
@@ -24,10 +24,10 @@ export const Form = ({ currencies }) => {
   return (
 
     <form className="form" onSubmit={onSubmit}>
-      <fieldset class="form__fieldset">
+      <fieldset className="form__fieldset">
         <legend>Kalkulator walut</legend>
 
-        <label class="form__label">Wpisz kwotę w PLN</label>
+        <label className="form__label">Wpisz kwotę w PLN</label>
 
         <input
           className="form__input"
@@ -43,10 +43,10 @@ export const Form = ({ currencies }) => {
 
       <fieldset>
 
-        <label class="form__label">Wybierz walutę na jaką chcesz przeliczyć</label>
+        <label className="form__label">Wybierz walutę na jaką chcesz przeliczyć</label>
 
 
-        <select class="form__select"
+        <select className="form__select"
           value={selectedCurrency}
           onChange={({ target }) => setSelectedCurrency(target.value)}>
           {currencies.map(currency => (
