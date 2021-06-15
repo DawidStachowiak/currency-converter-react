@@ -1,47 +1,77 @@
-import ".style.css";
+import "./style.css";
 import { useState } from "react";
+import {Result} from ("./Result");
 
-const Form =({currencies}) =>{
 
-    const [result, setResult] = useState("");
-    const [rates, setRate] = useState("USD");
+
+
+export const Form = ({ currencies }) => {
+  const [result, setResult] = useState("");
+  const [amount, setAmount] = useState("");
+  const [selectedCurrency, setSelectedCurrency] = useState("USD");
+
+  const onSubmit = (event) => {
+    event.preventDefaul();
+    const currency = currencies.find(({ name }) => name === selectedCurrency);
+    const result = calculateResult(amount, currency.price);
+    setResult({ value: result, currency: currency.id });
+  };
+
+  const calculateResult = (amount, price) => {
+    return amount / price;
+  };
+
+  return (
+
+    <form className="form" onSubmit={onSubmit}>
+      <fieldset class="form__fieldset">
+        <legend>Kalkulator walut</legend>
+
+        <label class="form__label">Wpisz kwotę w PLN</label>
+
+        <input
+          className="form__input"
+          placeholder="wpisz kwotę"
+          type="number"
+          min="1"
+          value={amount}
+          required
+          onChange={({ target }) => setAmount(target.value)}
+        />
+      </fieldset>
+
+
+      <fieldset>
+
+        <label class="form__label">Wybierz walutę na jaką chcesz przeliczyć</label>
+
+
+        <select class="form__select"
+          value={selectedCurrency}
+          onChange={({ target }) => setSelectedCurrency(target.value)}>
+          {currencies.map(currency => (
+            <option key={currency.id}>
+              {currency.name}
+            </option>)
+
+          )}
+
+        </select>
+
+      </fieldset>
+
+      <fieldset className="fieldset__result">
+        <legend>Po przeliczeniu</legend>
+            <Result result={result} />
+            </fieldset>
+
+        <button className="form__button js-convert__button" type="submit">
+          Przelicz
+    </button>
+        <button className="form__button js-remove__button" type="reset">
+          Wyczyść formularz
+    </button>
+  </form>)
+
 };
 
-{
-<form className="form">
-            <fieldset className="form__fieldset">
-                <legend>Kalkulator walut</legend>
-
-                <label className="form__label">Wpisz kwotę w PLN</label>
-
-                <input className="form__input js-form__input" placeholder="wpisz kwotę" type="number" min="1" value=""
-                    required name="pln">
-            </fieldset>
-
-            <fieldset>
-
-                <label className="form__label">Wybierz walutę na jaką chcesz przeliczyć</label>
-
-
-                <select className="form__select js__select--currency">
-                    <option value="usd">USD</option>
-                    <option value="eur">EUR</option>
-                    <option value="gbp">GBP</option>
-                    <option value="sek">SEK</option>
-                    <option value="chf">CHF</option>
-                </select>
-
-            </fieldset>
-
-            <fieldset className="fieldset__result">
-                <legend>Po przeliczeniu</legend>
-
-                <p className="formResult__paragraph js-result__paragraph">Otrzymasz:</p>
-
-            </fieldset>
-
-            <button className="form__button js-convert__button" type="submit">Przelicz</button>
-            <button className="form__button js-remove__button" type="reset">Wyczyść formularz</button>
-        </form>
-}
-        export default Form;

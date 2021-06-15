@@ -81,8 +81,3 @@ select {
     color: hsl(0, 0%, 96%);
     font-family: 'Lato', sans-serif;
 }
-
-.formResult__paragraph {
-    font-size: 18px;
-    font-family: 'Lato', sans-serif;
-}
