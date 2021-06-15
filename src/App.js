@@ -4,10 +4,14 @@ import { Form } from "./Form";
 import { currencies } from "./currencies";
 
 function App() {
+
+  
   return (
+
+    
     <Container>
       <Form currencies={currencies} />
-      
+      <Result result={result} />
     </Container>
   );
 }
