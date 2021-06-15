@@ -3,22 +3,12 @@ import Container from "./Container";
 import { Form } from "./Form";
 import { currencies } from "./currencies";
 
-
 function App() {
-
- 
-  
-    return (
-        <Container>
-
-<Form currencies={currencies} 
-
-
-
-/>
-        </Container>
-
-    );
+  return (
+    <Container>
+      <Form currencies={currencies} />
+    </Container>
+  );
 }
 
 export default App;

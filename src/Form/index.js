@@ -2,9 +2,6 @@ import "./style.css";
 import { useState } from "react";
 import { Result } from "../Result";
 
-
-
-
 export const Form = ({ currencies }) => {
   const [result, setResult] = useState("");
   const [amount, setAmount] = useState("");
@@ -22,7 +19,6 @@ export const Form = ({ currencies }) => {
   };
 
   return (
-
     <form className="form" onSubmit={onSubmit}>
       <fieldset className="form__fieldset">
         <legend>Kalkulator walut</legend>
@@ -40,38 +36,33 @@ export const Form = ({ currencies }) => {
         />
       </fieldset>
 
-
       <fieldset>
+        <label className="form__label">
+          Wybierz walutę na jaką chcesz przeliczyć
+        </label>
 
-        <label className="form__label">Wybierz walutę na jaką chcesz przeliczyć</label>
-
-
-        <select className="form__select"
+        <select
+          className="form__select"
           value={selectedCurrency}
-          onChange={({ target }) => setSelectedCurrency(target.value)}>
-          {currencies.map(currency => (
-            <option key={currency.id}>
-              {currency.name}
-            </option>)
-
-          )}
-
+          onChange={({ target }) => setSelectedCurrency(target.value)}
+        >
+          {currencies.map((currency) => (
+            <option key={currency.id} value={currency.name} >{currency.name}</option>
+          ))}
         </select>
-
       </fieldset>
 
       <fieldset className="fieldset__result">
         <legend>Po przeliczeniu</legend>
-            <Result result={result} />
-            </fieldset>
+        <Result result={result} />
+      </fieldset>
 
-        <button className="form__button js-convert__button" type="submit">
-          Przelicz
-    </button>
-        <button className="form__button js-remove__button" type="reset">
-          Wyczyść formularz
-    </button>
-  </form>)
-
+      <button className="form__button js-convert__button" type="submit">
+        Przelicz
+      </button>
+      <button className="form__button js-remove__button" type="reset">
+        Wyczyść formularz
+      </button>
+    </form>
+  );
 };
-
