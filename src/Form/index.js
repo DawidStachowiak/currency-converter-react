@@ -15,7 +15,7 @@ const Form = ({ currencies, calculateResult }) => {
       <fieldset className="form__fieldset">
         <legend>Kalkulator walut</legend>
 
-        <label className="form__label">Wybierz walutę</label>
+        <label className="form__label">Wybierz kwotę w PLN</label>
 
         <input
           className="form__input"
