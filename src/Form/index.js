@@ -1,7 +1,7 @@
 import "./style.css";
 import { useState } from "react";
 
-export const Form = ({ currencies, calculateResult }) => {
+const Form = ({ currencies, calculateResult }) => {
   const [amount, setAmount] = useState("");
   const [selectedCurrency, setSelectedCurrency] = useState(currencies[2].name);
 
@@ -15,7 +15,7 @@ export const Form = ({ currencies, calculateResult }) => {
       <fieldset className="form__fieldset">
         <legend>Kalkulator walut</legend>
 
-        <label className="form__label">Wpisz kwotę</label>
+        <label className="form__label">Wybierz walutę</label>
 
         <input
           className="form__input"
@@ -53,3 +53,5 @@ export const Form = ({ currencies, calculateResult }) => {
     </form>
   );
 };
+
+export default Form;
