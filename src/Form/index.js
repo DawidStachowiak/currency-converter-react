@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const Form = ({ currencies, calculateResult }) => {
   const [amount, setAmount] = useState("");
-  const [selectedCurrency, setSelectedCurrency] = useState(currencies[2].name);
+  const [selectedCurrency, setSelectedCurrency] = useState(currencies[0].name);
 
   const onSubmit = (event) => {
     event.preventDefault();
