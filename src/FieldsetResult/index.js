@@ -1,9 +1,11 @@
-import "./style.css";
-import { Result } from "../Result";
+import { Result } from "../Form/Result";
 
 export const FieldsetResult = (result) => {
-  <fieldset className="fieldset__result">
+  <fieldset class="fieldset__result">
     <h1>Po przeliczeniu</h1>
-    <Result result={result} />
+
+    <p class="formResult__paragraph js-result__paragraph">
+      <Result result={result} />
+    </p>
   </fieldset>;
 };
