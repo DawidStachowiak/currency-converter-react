@@ -11,7 +11,7 @@ function App() {
     
     <Container>
       <Form currencies={currencies} />
-      <Result result={result} />
+      
     </Container>
   );
 }

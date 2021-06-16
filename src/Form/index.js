@@ -1,6 +1,9 @@
 import "./style.css";
 import { useState } from "react";
-import { Result } from "../Result";
+import  {Result}  from "./Result";
+
+
+
 
 export const Form = ({ currencies }) => {
   const [result, setResult] = useState();
@@ -26,7 +29,7 @@ export const Form = ({ currencies }) => {
       <fieldset className="form__fieldset">
         <legend>Kalkulator walut</legend>
 
-        <label className="form__label">Wpisz kwotę w PLN</label>
+        <label className="form__label">Wpisz kwotę</label>
 
         <input
           className="form__input"
@@ -40,9 +43,7 @@ export const Form = ({ currencies }) => {
       </fieldset>
 
       <fieldset>
-        <label className="form__label">
-          Wybierz walutę na jaką chcesz przeliczyć
-        </label>
+        <label className="form__label">Wybierz walutę</label>
 
         <select
           className="form__select"
@@ -56,7 +57,8 @@ export const Form = ({ currencies }) => {
           ))}
         </select>
       </fieldset>
-                <Result result={result} />
+      
+      <Result result={result} />
       <button className="form__button" type="submit">
         Przelicz
       </button>
