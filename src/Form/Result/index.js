@@ -4,7 +4,7 @@ const Result = ({ result }) => (
   <div class="form__resultBox">
     {result !== undefined && (
       <p className="form__resultParagraph">
-        Otrzymasz:&nbsp;{result.targetAmount.toFixed(2)}&nbsp;
+        &nbsp;{result.targetAmount.toFixed(2)}&nbsp;PLN&nbsp;=&nbsp;
         {result.selectedCurrency}
       </p>
     )}
