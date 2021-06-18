@@ -10,8 +10,12 @@ const Form = ({ currencies, calculateResult }) => {
     calculateResult(amount, selectedCurrency);
   };
 
+  const onReset = () =>{
+      setAmount ("");
+  };
+
   return (
-    <form className="form" onSubmit={onSubmit}>
+    <form className="form" onSubmit={onSubmit} onReset={onReset}>
       <fieldset className="form__fieldset">
         <legend>Kalkulator walut</legend>
 
