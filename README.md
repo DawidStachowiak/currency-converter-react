@@ -1,6 +1,6 @@
 # Currency-calculator
 ## Preview
-GITHUB (https://github.com/DawidStachowiak/currency-converter-react)
+GITHUB (https://dawidstachowiak.github.io/currency-converter-react/)
 ### My project in YOUCODE 
 
 This is my work done in the YOUCODE course. Using the calculator you can convert currencies that are given in the selection field
