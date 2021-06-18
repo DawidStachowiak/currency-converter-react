@@ -18,4 +18,9 @@ export const ShowDateAndTime = () => {
       clearInterval(intervalId);
     };
   }, [time]);
+  return (
+    <p className="date__time">
+      Dziś jest {currentDate}, {newDate.toLocaleTimeString()}
+    </p>
+  );
 };
