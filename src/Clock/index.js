@@ -1,7 +1,7 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 
-export const ShowDateAndTime = () => {
+export const Clock = () => {
   const [time, setTime] = useState(0);
   const newDate = new Date();
   const currentDate = newDate.toLocaleDateString(undefined, {
