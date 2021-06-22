@@ -2,7 +2,7 @@ import "./style.css";
 import { useState, useEffect } from "react";
 
 export const Clock = () => {
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(new Date());
   const newDate = new Date();
   const currentDate = newDate.toLocaleDateString(undefined, {
     weekday: "long",
