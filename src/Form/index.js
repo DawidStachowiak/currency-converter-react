@@ -1,6 +1,7 @@
 import "./style.css";
 import { useState } from "react";
 
+
 const Form = ({ currencies, calculateResult }) => {
   const [amount, setAmount] = useState("");
   const [selectedCurrency, setSelectedCurrency] = useState(currencies[0].name);
@@ -11,7 +12,7 @@ const Form = ({ currencies, calculateResult }) => {
   };
 
   const onReset = () =>{
-      setAmount ("");
+    setAmount("");
   };
 
   return (
