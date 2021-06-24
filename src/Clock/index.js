@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 
 export const Clock = () => {
   const [date, setDate] = useState(new Date());
-  
   const currentDate = date.toLocaleDateString(undefined, {
     weekday: "long",
     day: "numeric",
@@ -21,9 +20,5 @@ export const Clock = () => {
       clearInterval(intervalId);
     };
   }, []);
-  return (
-    <p className="date__time">
-      Dziś jest {currentDate}
-    </p>
-  );
+  return <p className="date__time">Dziś jest {currentDate}</p>;
 };
