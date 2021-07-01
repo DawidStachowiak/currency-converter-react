@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormWrapper = styled.div`
+export const FormWrapper = styled.form`
   color: rgb(71, 134, 250);
   text-align: center;
   width: 100%;
