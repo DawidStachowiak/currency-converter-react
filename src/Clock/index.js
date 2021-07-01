@@ -1,5 +1,5 @@
-import "./style.css";
 import { useState, useEffect } from "react";
+import { ClockContainer } from "./styled";
 
 export const Clock = () => {
   const [date, setDate] = useState(new Date());
@@ -20,5 +20,5 @@ export const Clock = () => {
       clearInterval(intervalId);
     };
   }, []);
-  return <p className="date__time">Dziś jest {currentDate}</p>;
+  return <ClockContainer>Dziś jest {currentDate}</ClockContainer>;
 };
