@@ -1,12 +1,14 @@
 import "./style.css";
 import { useState } from "react";
+import { FormWrapper, FormInput, FormFieldset, FormLabel } from "./styled";
+
 
 
 const Form = ({ currencies, calculateResult }) => {
   const [amount, setAmount] = useState("");
   const [selectedCurrency, setSelectedCurrency] = useState(currencies[0].name);
 
-  const onSubmit = (event) => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
     calculateResult(amount, selectedCurrency);
   };
@@ -16,14 +18,13 @@ const Form = ({ currencies, calculateResult }) => {
   };
 
   return (
-    <form className="form" onSubmit={onSubmit} onReset={onReset}>
-      <fieldset>
+    <FormWrapper onSubmit={onFormSubmit} onReset={onReset}>
+      <FormFieldset>
         <legend>Kalkulator walut</legend>
 
-        <label className="form__label">Wpisz kwotę w PLN</label>
+        <FormLabel>Wpisz kwotę w PLN</FormLabel>
 
-        <input
-          className="form__input"
+        <FormInput
           placeholder="wpisz kwotę"
           type="number"
           min="1"
@@ -31,10 +32,10 @@ const Form = ({ currencies, calculateResult }) => {
           required
           onChange={({ target }) => setAmount(target.value)}
         />
-      </fieldset>
+      </FormFieldset>
 
-      <fieldset>
-        <label className="form__label">Wybierz walutę</label>
+      <FormFieldset>
+        <FormLabel>Wybierz walutę</FormLabel>
 
         <select
           className="form__select"
@@ -47,7 +48,7 @@ const Form = ({ currencies, calculateResult }) => {
             </option>
           ))}
         </select>
-      </fieldset>
+      </FormFieldset>
 
       <button className="form__button" type="submit">
         Przelicz
@@ -55,7 +56,7 @@ const Form = ({ currencies, calculateResult }) => {
       <button className="form__button" type="reset">
         Wyczyść formularz
       </button>
-    </form>
+    </FormWrapper>
   );
 };
 
