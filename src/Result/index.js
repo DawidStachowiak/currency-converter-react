@@ -1,14 +1,14 @@
-import "./style.css";
+import {ResultParagraph, ResultWrapper} from "./styled";
 import React from "react";
 const Result = ({ result }) => (
-  <div className="form__resultBox">
+  <ResultWrapper>
     {result !== undefined && (
-      <p className="form__resultParagraph">
+      <ResultParagraph>
         Wynik: &nbsp;{result.targetAmount.toFixed(2)}&nbsp;
         {result.selectedCurrency}
-      </p>
+      </ResultParagraph>
     )}
-  </div>
+  </ResultWrapper>
 );
 
 export default Result;
