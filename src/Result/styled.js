@@ -8,10 +8,10 @@ export const ResultParagraph = styled.p`
 `;
 
 export const ResultWrapper = styled.div`
-  border-color: rgb(30, 91, 224);
+  border-color: ${({theme})=>theme.colors.mariner};
   border-radius: 3px;
   margin-top: 15px;
   margin-bottom: 20px;
-  background-color: rgb(251, 255, 255);
+  background-color: ${({ theme }) => theme.colors.twilightBlue};
   height: 80px;
 `;
