@@ -7,7 +7,7 @@ export const Clock = () => {
  return (
   <ClockContainer>
     Dzisiaj jest 
-    {""}
+    {" "}
     {useCurrentDate(date)}
     </ClockContainer>
 );

@@ -11,5 +11,6 @@ export const theme = {
     blackOlive: "#242E16",
     indigo: "#4682C8",
     mariner: "#1E5BE0",
+    yellow: "#FDFF00",
   }
 };
