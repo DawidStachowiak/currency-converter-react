@@ -5,6 +5,10 @@ export const Clock = () => {
  const date =  useCurrentDate();
 
  return (
-  <ClockContainer>Dzisiaj jest {date}</ClockContainer>
+  <ClockContainer>
+    Dzisiaj jest 
+    {""}
+    {useCurrentDate(date)}
+    </ClockContainer>
 );
 };
