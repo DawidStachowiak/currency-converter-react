@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import Container from "./Container";
 import Form from "./Form";
-import { currencies } from "./Form/currencies";
+import { currencies } from "./Form/currencies.js";
 import Result from "./Result";
 import { Clock } from "./Clock";
 function App() {

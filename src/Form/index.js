@@ -9,7 +9,6 @@ import {
   FormSelect,
 } from "./styled";
 
-
 const Form = ({ currencies, calculateResult }) => {
   const [amount, setAmount] = useState("");
   const [selectedCurrency, setSelectedCurrency] = useState(currencies[0].name);
@@ -21,7 +20,6 @@ const Form = ({ currencies, calculateResult }) => {
 
   const onReset = (result) => {
     setAmount("");
-    
   };
 
   return (
