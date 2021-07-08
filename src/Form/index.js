@@ -8,10 +8,12 @@ import {
   FormLegend,
   FormSelect,
 } from "./styled";
+import { useDataRates } from "../useDataRates";
 
 const Form = ({ currencies, calculateResult }) => {
   const [amount, setAmount] = useState("");
   const [selectedCurrency, setSelectedCurrency] = useState(currencies[0].name);
+  const ratesData = useDataRates();
 
   const onFormSubmit = (event) => {
     event.preventDefault();
