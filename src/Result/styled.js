@@ -8,10 +8,17 @@ export const ResultParagraph = styled.p`
 `;
 
 export const ResultWrapper = styled.div`
-  border-color: ${({theme})=>theme.colors.mariner};
+  border-color: ${({ theme }) => theme.colors.mariner};
   border-radius: 3px;
   margin-top: 15px;
   margin-bottom: 20px;
   background-color: ${({ theme }) => theme.colors.twilightBlue};
   height: 80px;
+`;
+
+export const setCurrentDay = styled.p`
+  color: ${({ theme }) => theme.colors.twilightBlue};
+  margin-top: 15px;
+  margin-bottom: 20px;
+  font-size:15px;
 `;

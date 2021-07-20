@@ -73,3 +73,11 @@ export const FormSelect = styled.select`
   color: ${({ theme }) => theme.colors.wildSand};
   font-family: "Lato", sans-serif;
 `;
+
+export const Error = styled.p`
+color: ${({theme})=>theme.colors.mariner};
+`;
+
+export const LoadingData = styled.p`
+color: ${({theme})=>theme.colors.mariner};
+`;

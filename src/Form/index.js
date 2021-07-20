@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Result from "../Result";
 import {
   FormWrapper,
   FormInput,
@@ -7,40 +8,56 @@ import {
   FormButton,
   FormLegend,
   FormSelect,
+  LoadingData,
+  Error,
 } from "./styled";
 import { useDataRates } from "../useDataRates";
 
-const Form = ({ currencies, calculateResult }) => {
-  const [amount, setAmount] = useState("");
-  const [selectedCurrency, setSelectedCurrency] = useState(currencies[0].name);
+const Form = () => {
   const ratesData = useDataRates();
+
+  const [result, setResult] = useState();
+
+  const calculateResult = (amount, selectedCurrency) => {
+    const rate = ratesData.rates[selectedCurrency];
+    setResult({
+      sourceAmount: +amount,
+      targetAmount: amount / rate,
+      selectedCurrency,
+    });
+  };
+  const [selectedCurrency, setSelectedCurrency] = useState("EUR");
+  const [amount, setAmount] = useState("");
 
   const onFormSubmit = (event) => {
     event.preventDefault();
     calculateResult(amount, selectedCurrency);
   };
 
-  const onReset = (result) => {
-    setAmount("");
-  };
-
   return (
-    <FormWrapper onSubmit={onFormSubmit} onReset={onReset}>
-      <FormFieldset>
-        <FormLegend>Kalkulator walut</FormLegend>
+    <FormWrapper onSubmit={onFormSubmit}>
+      {ratesData.state === "loading" ? (
+        <LoadingData>
+          Please wait while the data is downloaded from the Central Bank
+        </LoadingData>
+      ) : ratesData.state === "error" ? (
+        <Error>Ups... something went wrong.</Error>
+      ) : (
+        <FormFieldset>
+          <FormLegend>Kalkulator walut</FormLegend>
 
-        <FormLabel>Wpisz kwotę w PLN</FormLabel>
+          <FormLabel>Wpisz kwotę w PLN</FormLabel>
 
-        <FormInput
-          placeholder="wpisz kwotę"
-          type="number"
-          min="1"
-          value={amount}
-          required
-          onChange={({ target }) => setAmount(target.value)}
-        />
-      </FormFieldset>
-
+          <FormInput
+            placeholder="wpisz kwotę"
+            type="number"
+            min="1"
+            value={amount}
+            required
+            onChange={({ target }) => setAmount(target.value)}
+          />
+        </FormFieldset>
+      )}
       <FormFieldset>
         <FormLabel>Wybierz walutę</FormLabel>
 
@@ -48,16 +65,15 @@ const Form = ({ currencies, calculateResult }) => {
           value={selectedCurrency}
           onChange={({ target }) => setSelectedCurrency(target.value)}
         >
-          {currencies.map((currency) => (
-            <option key={currency.id} value={currency.name}>
-              {currency.name}
+          {Object.keys(ratesData.rates).map((selectedCurrency) => (
+            <option key={selectedCurrency} value={selectedCurrency}>
+              {selectedCurrency}
             </option>
           ))}
         </FormSelect>
       </FormFieldset>
-
+      <Result result={result} />
       <FormButton type="submit">Przelicz</FormButton>
-      <FormButton type="reset">Wyczyść formularz</FormButton>
     </FormWrapper>
   );
 };
