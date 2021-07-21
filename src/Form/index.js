@@ -15,6 +15,7 @@ import { useDataRates } from "../useDataRates";
 
 const Form = () => {
   const ratesData = useDataRates();
+  
 
   const [result, setResult] = useState();
 
@@ -65,11 +66,14 @@ const Form = () => {
           value={selectedCurrency}
           onChange={({ target }) => setSelectedCurrency(target.value)}
         >
-          {Object.keys(ratesData.rates).map((selectedCurrency) => (
-            <option key={selectedCurrency} value={selectedCurrency}>
+          {Object.keys(ratesData.rates).map(((selectedCurrency) => (
+            <option 
+            key={selectedCurrency} 
+            value={selectedCurrency}
+            >
               {selectedCurrency}
             </option>
-          ))}
+          )))}
         </FormSelect>
       </FormFieldset>
       <Result result={result} />
