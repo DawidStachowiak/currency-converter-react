@@ -79,5 +79,5 @@ color: ${({theme})=>theme.colors.mariner};
 `;
 
 export const LoadingData = styled.p`
-color: ${({theme})=>theme.colors.mariner};
+color: ${({theme})=>theme.colors.yellow};
 `;

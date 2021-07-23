@@ -1,11 +1,10 @@
-import { ResultParagraph, ResultWrapper, setCurrentDay } from "./styled";
+import { ResultParagraph, ResultWrapper, CurrentDayParagraph } from "./styled";
 import React from "react";
 const Result = ({ result }) => (
   <ResultWrapper>
     {result !== undefined && (
       <ResultParagraph>
-        <setCurrentDay>Kursy ładowane są na aktualny dzień</setCurrentDay>
-        Wynik: &nbsp;{result.targetAmount.toFixed(2)}&nbsp;
+        <CurrentDayParagraph>Kursy ładowane są na aktualny dzień</CurrentDayParagraph>
         {result.selectedCurrency}&nbsp;
       </ResultParagraph>
     )}

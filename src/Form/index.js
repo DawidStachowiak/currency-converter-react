@@ -13,26 +13,24 @@ import {
 } from "./styled";
 import { useDataRates } from "../useDataRates";
 
-const Form = () => {
-  const ratesData = useDataRates();
-  
-
+const Form = (rates, date) => {
   const [result, setResult] = useState();
+  const ratesData = useDataRates();
 
-  const calculateResult = (amount, selectedCurrency) => {
-    const rate = ratesData.rates[selectedCurrency];
+  const calculateResult = (amount, currency) => {
+    const rate = rates[currency];
     setResult({
       sourceAmount: +amount,
       targetAmount: amount / rate,
-      selectedCurrency,
+      currency,
     });
   };
-  const [selectedCurrency, setSelectedCurrency] = useState("EUR");
+  const [currency, setCurrency] = useState("USD");
   const [amount, setAmount] = useState("");
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    calculateResult(amount, selectedCurrency);
+    calculateResult(amount, currency);
   };
 
   return (
@@ -63,20 +61,17 @@ const Form = () => {
         <FormLabel>Wybierz walutę</FormLabel>
 
         <FormSelect
-          value={selectedCurrency}
-          onChange={({ target }) => setSelectedCurrency(target.value)}
+          value={currency}
+          onChange={({ target }) => setCurrency(target.value)}
         >
-          {Object.keys(ratesData.rates).map(((selectedCurrency) => (
-            <option 
-            key={selectedCurrency} 
-            value={selectedCurrency}
-            >
-              {selectedCurrency}
+          {Object.keys(rates).map((currency) => (
+            <option key={currency} value={currency}>
+              {currency}
             </option>
-          )))}
+          ))}
         </FormSelect>
       </FormFieldset>
-      <Result result={result} />
+      <Result result={result} date={date} />
       <FormButton type="submit">Przelicz</FormButton>
     </FormWrapper>
   );
