@@ -18,7 +18,7 @@ import { useDataRates } from "../useDataRates";
 export const Form = () => {
   const [result, setResult] = useState();
   const ratesData = useDataRates();
-
+  
   const calculateResult = (currency, amount) => {
       const rate = ratesData.rates[currency];
 
@@ -36,7 +36,7 @@ export const Form = () => {
       event.preventDefault();
       calculateResult(selectedCurrency, amount);
   }
-
+  
   return (
     <FormWrapper onSubmit={onSubmit}>
       {ratesData.state === "loading" ? (
@@ -69,7 +69,7 @@ export const Form = () => {
           onChange={({ target }) => setSelectedCurrency(target.value)}
         >
           
-          {Object.keys(ratesData.rates).map((selectedCurrency) => (
+          {!! ratesData.rates && Object.keys(ratesData.rates).map((selectedCurrency) => (
             <option key={selectedCurrency} value={selectedCurrency}>
               {selectedCurrency}
             </option>
