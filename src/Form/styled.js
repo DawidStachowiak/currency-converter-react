@@ -18,7 +18,7 @@ export const FormInput = styled.input`
 `;
 
 export const FormFieldset = styled.fieldset`
-  border-color: ${({theme})=>theme.colors.mariner};
+  border-color: ${({ theme }) => theme.colors.mariner};
   border-radius: 3px;
   margin-top: 15px;
   margin-bottom: 20px;
@@ -64,7 +64,7 @@ export const FormLegend = styled.legend`
 export const FormSelect = styled.select`
   padding: 10px;
   background-color: ${({ theme }) => theme.colors.steelBlue};
-  border-color: ${({theme})=>theme.colors.mariner};
+  border-color: ${({ theme }) => theme.colors.mariner};
   max-width: 350px;
   border-radius: 4px;
   width: 100%;
@@ -75,9 +75,16 @@ export const FormSelect = styled.select`
 `;
 
 export const Error = styled.p`
-color: ${({theme})=>theme.colors.mariner};
+  color: ${({ theme }) => theme.colors.mariner};
 `;
 
 export const LoadingData = styled.p`
-color: ${({theme})=>theme.colors.yellow};
+  color: ${({ theme }) => theme.colors.yellow};
+`;
+
+export const CurrentDayParagraph = styled.p`
+  color: ${({ theme }) => theme.colors.wildSand};
+  margin-top: 15px;
+  margin-bottom: 20px;
+  font-size: 15px;
 `;

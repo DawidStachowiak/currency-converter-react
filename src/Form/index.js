@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Result from "../Result";
+
 import {
   FormWrapper,
   FormInput,
@@ -10,31 +11,34 @@ import {
   FormSelect,
   LoadingData,
   Error,
+  CurrentDayParagraph,
 } from "./styled";
 import { useDataRates } from "../useDataRates";
 
-const Form = (rates, date) => {
+export const Form = () => {
   const [result, setResult] = useState();
   const ratesData = useDataRates();
 
-  const calculateResult = (amount, currency) => {
-    const rate = rates[currency];
-    setResult({
-      sourceAmount: +amount,
-      targetAmount: amount / rate,
-      currency,
-    });
-  };
-  const [currency, setCurrency] = useState("USD");
+  const calculateResult = (currency, amount) => {
+      const rate = ratesData.rates[currency];
+
+      setResult({
+          sourceAmount: +amount,
+          targetAmount: amount * rate,
+          selectedCurrency,
+      });
+  }
+
+  const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [amount, setAmount] = useState("");
 
-  const onFormSubmit = (event) => {
-    event.preventDefault();
-    calculateResult(amount, currency);
-  };
+  const onSubmit = (event) => {
+      event.preventDefault();
+      calculateResult(selectedCurrency, amount);
+  }
 
   return (
-    <FormWrapper onSubmit={onFormSubmit}>
+    <FormWrapper onSubmit={onSubmit}>
       {ratesData.state === "loading" ? (
         <LoadingData>
           Please wait while the data is downloaded from the Central Bank
@@ -61,17 +65,22 @@ const Form = (rates, date) => {
         <FormLabel>Wybierz walutę</FormLabel>
 
         <FormSelect
-          value={currency}
-          onChange={({ target }) => setCurrency(target.value)}
+          value={selectedCurrency}
+          onChange={({ target }) => setSelectedCurrency(target.value)}
         >
-          {Object.keys(rates).map((currency) => (
-            <option key={currency} value={currency}>
-              {currency}
+          
+          {Object.keys(ratesData.rates).map((selectedCurrency) => (
+            <option key={selectedCurrency} value={selectedCurrency}>
+              {selectedCurrency}
             </option>
           ))}
         </FormSelect>
       </FormFieldset>
-      <Result result={result} date={date} />
+
+      <Result result={result} />
+      <CurrentDayParagraph>
+       Kursy ładowane są na aktualny dzień
+      </CurrentDayParagraph>
       <FormButton type="submit">Przelicz</FormButton>
     </FormWrapper>
   );

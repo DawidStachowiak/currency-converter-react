@@ -16,9 +16,3 @@ export const ResultWrapper = styled.div`
   height: 80px;
 `;
 
-export const CurrentDayParagraph = styled.p`
-  color: ${({ theme }) => theme.colors.twilightBlue};
-  margin-top: 15px;
-  margin-bottom: 20px;
-  font-size:15px;
-`;
