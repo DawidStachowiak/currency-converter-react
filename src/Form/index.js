@@ -79,7 +79,7 @@ export const Form = () => {
 
       <Result result={result} />
       <CurrentDayParagraph>
-       Kursy ładowane są na aktualny dzień
+       Kursy ładowane są na dzień {ratesData.date}
       </CurrentDayParagraph>
       <FormButton type="submit">Przelicz</FormButton>
     </FormWrapper>
