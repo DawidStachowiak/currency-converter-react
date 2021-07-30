@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Result from "../Result";
-import loadingImage from "../images/389.gif";
+import loadingImage from "../images/load.gif";
 import Loading from "../Loading";
 import { ErrorBox } from "./Error/styled";
 import {
