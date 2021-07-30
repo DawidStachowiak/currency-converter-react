@@ -9,5 +9,5 @@ export const LoaderBox = styled.div`
 `;
 
 export const Image = styled.img`
-    max-width: 75%;
+    max-width: 80%;
 `;

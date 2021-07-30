@@ -2,6 +2,7 @@ import { useState } from "react";
 import Result from "../Result";
 import loadingImage from "../images/389.gif";
 import Loading from "../Loading";
+import { ErrorBox } from "./Error/styled";
 import {
   FormWrapper,
   FormInput,
@@ -10,7 +11,6 @@ import {
   FormButton,
   FormLegend,
   FormSelect,
-  Error,
   CurrentDayParagraph,
 } from "./styled";
 import { useDataRates } from "../useDataRates";
@@ -29,7 +29,7 @@ export const Form = () => {
     });
   };
 
-  const [selectedCurrency, setSelectedCurrency] = useState("USD");
+  const [selectedCurrency, setSelectedCurrency] = useState([]);
   const [amount, setAmount] = useState("");
 
   const onSubmit = (event) => {
@@ -43,14 +43,14 @@ export const Form = () => {
       {ratesData.state === "loading" ? (
         
         <Loading
-        info="Daj nam chwileczkę...Dane są ładowane z Narodowego Banku Centralnego :)"
+        info="Give us a minute ... The data is being loaded from the National Central Bank :)"
         source={loadingImage}
-        alt="errorImage"
+        
       />         
             
         
       ) : ratesData.state === "error" ? (
-        <Error>Ups... something went wrong.</Error>
+        <ErrorBox>Ups... something went wrong.</ErrorBox>
       ) : (
         <FormFieldset>
           <FormLegend>Kalkulator walut</FormLegend>

@@ -74,15 +74,9 @@ export const FormSelect = styled.select`
   font-family: "Lato", sans-serif;
 `;
 
-export const Error = styled.p`
-  color: ${({ theme }) => theme.colors.mariner};
-`;
-
-
 export const CurrentDayParagraph = styled.p`
   color: ${({ theme }) => theme.colors.wildSand};
   margin-top: 15px;
   margin-bottom: 20px;
   font-size: 15px;
 `;
-
