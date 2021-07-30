@@ -3,7 +3,7 @@ import React from "react";
 const Result = ({ result }) => (
   <ResultWrapper>
     {result !== undefined && (
-      <ResultParagraph>
+      <ResultParagraph>Wynik:&nbsp;
         {result.sourceAmount.toFixed(2)}&nbsp;PLN&nbsp;=
                 {" "}
                 <strong>

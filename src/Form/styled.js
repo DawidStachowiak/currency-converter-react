@@ -78,9 +78,6 @@ export const Error = styled.p`
   color: ${({ theme }) => theme.colors.mariner};
 `;
 
-export const LoadingData = styled.p`
-  color: ${({ theme }) => theme.colors.yellow};
-`;
 
 export const CurrentDayParagraph = styled.p`
   color: ${({ theme }) => theme.colors.wildSand};
@@ -88,3 +85,4 @@ export const CurrentDayParagraph = styled.p`
   margin-bottom: 20px;
   font-size: 15px;
 `;
+

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Result from "../Result";
-
+import loadingImage from "../images/389.gif";
+import Loading from "../Loading";
 import {
   FormWrapper,
   FormInput,
@@ -9,7 +10,6 @@ import {
   FormButton,
   FormLegend,
   FormSelect,
-  LoadingData,
   Error,
   CurrentDayParagraph,
 } from "./styled";
@@ -18,31 +18,37 @@ import { useDataRates } from "../useDataRates";
 export const Form = () => {
   const [result, setResult] = useState();
   const ratesData = useDataRates();
-  
+
   const calculateResult = (currency, amount) => {
-      const rate = ratesData.rates[currency];
+    const rate = ratesData.rates[currency];
 
-      setResult({
-          sourceAmount: +amount,
-          targetAmount: amount * rate,
-          selectedCurrency,
-      });
-  }
+    setResult({
+      sourceAmount: +amount,
+      targetAmount: amount * rate,
+      selectedCurrency,
+    });
+  };
 
-  const [selectedCurrency, setSelectedCurrency] = useState("EUR");
+  const [selectedCurrency, setSelectedCurrency] = useState("USD");
   const [amount, setAmount] = useState("");
 
   const onSubmit = (event) => {
-      event.preventDefault();
-      calculateResult(selectedCurrency, amount);
-  }
-  
+    event.preventDefault();
+    calculateResult(selectedCurrency, amount);
+  };
+
   return (
+    
     <FormWrapper onSubmit={onSubmit}>
       {ratesData.state === "loading" ? (
-        <LoadingData>
-          Please wait while the data is downloaded from the Central Bank
-        </LoadingData>
+        
+        <Loading
+        info="Daj nam chwileczkę...Dane są ładowane z Narodowego Banku Centralnego :)"
+        source={loadingImage}
+        alt="errorImage"
+      />         
+            
+        
       ) : ratesData.state === "error" ? (
         <Error>Ups... something went wrong.</Error>
       ) : (
@@ -68,21 +74,22 @@ export const Form = () => {
           value={selectedCurrency}
           onChange={({ target }) => setSelectedCurrency(target.value)}
         >
-          
-          {!! ratesData.rates && Object.keys(ratesData.rates).map((selectedCurrency) => (
-            <option key={selectedCurrency} value={selectedCurrency}>
-              {selectedCurrency}
-            </option>
-          ))}
+          {!!ratesData.rates &&
+            Object.keys(ratesData.rates).map((selectedCurrency) => (
+              <option key={selectedCurrency} value={selectedCurrency}>
+                {selectedCurrency}
+              </option>
+            ))}
         </FormSelect>
       </FormFieldset>
 
       <Result result={result} />
       <CurrentDayParagraph>
-       Kursy ładowane są na dzień {ratesData.date}
+        Kursy ładowane są na dzień <strong>{ratesData.date}</strong>
       </CurrentDayParagraph>
       <FormButton type="submit">Przelicz</FormButton>
     </FormWrapper>
+    
   );
 };
 
