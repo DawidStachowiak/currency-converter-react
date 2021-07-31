@@ -43,14 +43,14 @@ export const Form = () => {
       {ratesData.state === "loading" ? (
         
         <Loading
-        info="Give us a minute ... The data is being loaded from the National Central Bank :)"
+        info="Daj nam chwileczkę.. Ładowanie danych z Narodowego Banku Centralnego :)"
         source={loadingImage}
         
       />         
             
         
       ) : ratesData.state === "error" ? (
-        <ErrorBox>Ups... something went wrong.</ErrorBox>
+        <ErrorBox>Ups... Coś poszło nie tak. Sprawdź swoje połączenie internetowe</ErrorBox>
       ) : (
         <FormFieldset>
           <FormLegend>Kalkulator walut</FormLegend>
